@@ -1,12 +1,13 @@
 
 # dependencies
-/node_modules
-/database
+node_modules/
+database/
+.env
 # testing
 /coverage
 
 # production
-/build
+build/
 
 # misc
 .DS_Store

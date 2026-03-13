@@ -13,6 +13,7 @@ function validateUser(req, res, next){
             error: "Age is required"
         })
     }
+    next()
 }
 
 module.exports = validateUser

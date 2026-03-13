@@ -10,10 +10,16 @@ async function getUserById(id){
     const user = await userRepository.findById(id)
 
     if(!user){
-        throw new Error("User not found")
+        return {
+            success: false,
+            error: "User not found"
+        }
     }
 
-    return user
+    return {
+        success: true,
+        data: user
+    }
 }
 
 async function createUser(name, age){
