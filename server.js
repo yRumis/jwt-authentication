@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 const express = require("express")
 const userRoutes = require("./modules/users/userRoutes")
 const authRoutes = require("./modules/auth/authRoutes")

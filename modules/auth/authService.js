@@ -1,19 +1,30 @@
 const jwt = require("jsonwebtoken")
+const userRepository = require("../users/userRepository")
 
 async function login(email, password){
 
-    // apenas exemplo (depois vamos validar no banco)
+    const user = await userRepository.findByEmail(email)
 
-    if(email !== "admin@email.com" || password !== "123456"){
+    if(!user){
         return {
             success: false,
-            error: "Invalid credentials"
+            error: "User not found"
+        }
+    }
+
+    if(user.password !== password){
+        return {
+            success: false,
+            error: "Invalid password"
         }
     }
 
     const token = jwt.sign(
-        { id: 1 },
-        "segredo_super",
+        { 
+            id: user.id,
+            role: user.role
+        },
+        process.env.JWT_SECRET,
         { expiresIn: "1h" }
     )
 
@@ -21,7 +32,6 @@ async function login(email, password){
         success: true,
         token
     }
-
 }
 
 module.exports = {
