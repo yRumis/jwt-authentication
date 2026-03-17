@@ -2,8 +2,9 @@ const express = require("express")
 const router = express.Router()
 
 
-const {getUsers, createUser, getUserById, updateUser, deleteUser} = require("../controllers/userController")
-const validateUser = require("../middlewares/validateUser")
+const {getUsers, createUser, getUserById, updateUser, deleteUser} = require("./userController")
+const validateUser = require("../../middlewares/validateUser")
+
 
 router.get("/", getUsers)
 

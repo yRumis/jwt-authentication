@@ -1,4 +1,4 @@
-const db = require ("../database/db")
+const db = require ("../../database/db")
 
 
 // acesso ao banco, modifica, cria, deleta
